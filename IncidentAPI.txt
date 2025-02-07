@@ -1,0 +1,143 @@
+
+
+
+Registraion Api
+--------------------
+
+Post :  http://localhost:8080/api/users/register
+
+
+Send  {
+  "userName": "Nitin",
+  "email": "nitin@123.com",
+  "phoneNumber": "9898989898",
+  "pinCode": "282001",
+  "password":"nitin",
+  "address": "23, colony, Agra"
+}
+
+
+Response  :  {
+    "id": 3,
+    "userName": "Nitin",
+    "email": "nitin@123.com",
+    "password": "$2a$10$lzIg8O3oxKz8O2DRIj78bOfJAgvE00U5VKFD7R4OGfmTh5R/XIP3G",
+    "phoneNumber": "9898989898",
+    "pinCode": "282001",
+    "city": "Agra",
+    "country": "India",
+    "address": "23, colony, Agra"
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+Login Api
+
+Post : http://localhost:8080/api/users/login
+
+send : {
+   "email": "nitin@123.com",
+    "password":"nitin"
+}
+
+
+Response:
+
+          {
+    "message": "Login successful!",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaXRpbkAxMjMuY29tIiwiaWF0IjoxNzM4OTU3ODU1LCJleHAiOjE3Mzg5NjE0NTV9.flBh-HNswVRxnvOrZXo_qmTzKflMBxgMmwFwBiBq_Rg"
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Forget Password
+---------------------
+
+Post :  http://localhost:8080/api/users/forgot-password
+
+Send: {
+        "email": "nitin@123.com"
+}
+
+Response :  {
+    "message": "Your OTP for password reset is: 848720"
+}
+
+
+
+Reset Password :
+-------------------- 
+
+Post: http://localhost:8080/api/users/reset-password
+
+
+send :{
+
+{
+    "email": "nitin@123.com",
+    "otp": "848720",
+    "newPassword": "nitin100"
+}
+
+response
+{
+    "message": "Password reset successful!"
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+Incident Management
+------------------------
+
+Post :  http://localhost:8080/api/users/3/create
+
+
+
+{
+    "enterpriseGovtId": "123",
+    "incidentDetails": "Server crash in production.",
+    "priority": "HIGH"
+}
+
+
+Response
+
+{
+    "incidentId": "RMG28171-2025",
+    "reporter": {
+        "id": 3,
+        "userName": "Nitin",
+        "email": "nitin@123.com",
+        "password": "$2a$10$.aWIP//GpuTPi6iTZvCNwOxJH1qWy4G0zqcrVV.pLVC4Mpr5ixFfu",
+        "phoneNumber": "9898989898",
+        "pinCode": "282001",
+        "city": "Agra",
+        "country": "India",
+        "address": "23, colony, Agra"
+    },
+    "reporterName": "Nitin",
+    "enterpriseGovtId": "123",
+    "incidentDetails": "Server crash in production.",
+    "reportedDateTime": "2025-02-08T01:29:41.9403818",
+    "priority": "HIGH",
+    "status": "OPEN"
+}  
+
+-----------------------------------------------------------------
+
+
+Put : http://localhost:8080/api/users/3/RMG28171-2025
+
+{
+  "title": "Server Issue Resolved",
+  "description": "The main server is now responding.",
+  "status": "CLOSED"
+}
+
+
